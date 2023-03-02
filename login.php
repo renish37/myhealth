@@ -3,7 +3,7 @@ include('inc/connection.php');
 $invalid = false;
 // if(isset($_SESSION['uid']) && $_SESSION['uid']!='')
 // {
-//   header('Location: home.php');
+//   header('Location: patient_home.php');
 // }
 // if(isset($_POST['btn_login']))
 // {
@@ -19,7 +19,7 @@ $invalid = false;
      
 //      $row = mysqli_fetch_assoc($res);
 //     $_SESSION['uid'] = $row['uid'];
-//     header('Location: home.php');
+//     header('Location: patient_home.php');
      
 //     }else $msg =  "Username or Password wrong"; 
 //   }else $msg =  "Username or Password wrong"; 
@@ -33,15 +33,19 @@ $invalid = false;
 if(isset($_POST['email'])){
   $email = $_POST['email'];
   $pasword = $_POST['password'];
+  $role = $_POST['role'];
 
-  $sql = "SELECT * FROM `users` WHERE `email` = '$email' AND `pwd` = '$pasword'";
+  $sql = "SELECT * FROM `users` WHERE `email` = '$email' AND `pwd` = '$pasword' AND `role` = '$role'";
 
   $result = mysqli_query($con,$sql);
 
   $num = mysqli_num_rows($result);
 
   if($num > 0){
-    header("location: home.php");
+    $row = mysqli_fetch_assoc($result);
+    $_SESSION['username'] = $row['username'];
+    $_SESSION['role'] = $row['role'];
+    header("location: patient_home.php");
   }else{
     $invalid = true;
   }
@@ -143,11 +147,20 @@ if(isset($_POST['email'])){
                     </div>
                     <div class="mb-1">
                       <div class="d-flex justify-content-between">
-                        <label class="form-label" for="login-password">Password</label><a href="reset_password.php"><small>Forgot Password?</small></a>
+                        <label class="form-label" for="login-password">Password</label><a href="reset_password.php">
+                        <!-- <small>Forgot Password?</small> -->
+                        </a>
                       </div>
                       <div class="input-group input-group-merge form-password-toggle">
                         <input class="form-control form-control-merge" id="login-password" type="password" name="password" placeholder="············" aria-describedby="login-password" tabindex="2"/><span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span>
                       </div>
+                    </div>
+                    <div class="mb-1">
+                      <label class="form-label" for="select-country">Login as</label>
+                      <select class="form-select select2" id="select-country" name="role" required>
+                        <option value="patient">Patient</option>
+                        <option value="doctor">Doctor</option>
+                      </select>
                     </div>
                     <p>
                       <?php
@@ -156,12 +169,12 @@ if(isset($_POST['email'])){
                       }
                       ?>
                     </p>
-                    <div class="mb-1">
+                    <!-- <div class="mb-1">
                       <div class="form-check">
                         <input class="form-check-input" id="remember-me" type="checkbox" tabindex="3"/>
                         <label class="form-check-label" for="remember-me"> Remember Me</label>
                       </div>
-                    </div>
+                    </div> -->
                     <!-- <input type="submit" name="submit"> -->
                     <button name="btn_login" type="submit" class="btn btn-primary w-100" tabindex="4">Sign in</button>
                     <?php
@@ -170,11 +183,11 @@ if(isset($_POST['email'])){
                   </form>
                   
                   <p class="text-center mt-2"><span>New on our platform?</span><a href="register.php"><span>&nbsp;Create an account</span></a></p>
-                  <div class="divider my-2">
+                  <!-- <div class="divider my-2">
                     <div class="divider-text">or</div>
                   </div>
                   <div class="auth-footer-btn d-flex justify-content-center"><a class="btn btn-facebook" href="#"><i data-feather="facebook"></i></a><a class="btn btn-twitter white" href="#"><i data-feather="twitter"></i></a><a class="btn btn-google" href="#"><i data-feather="mail"></i></a><a class="btn btn-github" href="#"><i data-feather="github"></i></a></div>
-                </div>
+                </div> -->
               </div>
               <!-- /Login-->
             </div>
