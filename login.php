@@ -45,7 +45,11 @@ if(isset($_POST['email'])){
     $row = mysqli_fetch_assoc($result);
     $_SESSION['username'] = $row['username'];
     $_SESSION['role'] = $row['role'];
+    if($_SESSION['role'] == 'doctor'){
+      header("location: doctor_home.php");
+  }else{
     header("location: patient_home.php");
+  }  
   }else{
     $invalid = true;
   }

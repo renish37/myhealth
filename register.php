@@ -26,6 +26,7 @@ if(isset($_POST['username'])){
   $username = $_POST['username'];
   $email = $_POST['email'];
   $password = $_POST['password'];
+  $role = $_POST['role'];
 
   // check user already registered 
   $sql_check = "SELECT * FROM `users` WHERE `email` = '$email'";
@@ -39,7 +40,7 @@ if(isset($_POST['username'])){
     //INSERT INTO `users` (`uid`, `username`, `fname`, `lname`, `email`, `pwd`, `phone`, `status`, `edate`) VALUES (NULL, 'brij', 'brij', 'lathiya', 'brij@gmail.com', 'brij', '123567890', '1', CURRENT_TIMESTAMP);
 
     
-    $insert = "INSERT INTO `users` ( `username`, `fname`, `lname`, `email`, `pwd`, `phone`, `status`, `edate`) VALUES ( '$username', NULL, NULL, '$email', '$password', NULL, '1', CURRENT_TIMESTAMP)";
+    $insert = "INSERT INTO `users` ( `username`,  `email`, `pwd`, `phone`,`role`, `status`, `edate`) VALUES ( '$username', '$email', '$password', NULL,'$role', '1', CURRENT_TIMESTAMP)";
     $result_insert = mysqli_query($con,$insert);    
 
     $_SESSION['username'] = $username;
@@ -157,6 +158,13 @@ if(isset($_POST['username'])){
                       <div class="input-group input-group-merge form-password-toggle">
                         <input class="form-control form-control-merge" name="password" id="register-password" type="password" name="password" placeholder="············" aria-describedby="register-password" tabindex="3"/><span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span>
                       </div>
+                    </div>
+                    <div class="mb-1">
+                      <label class="form-label" for="select-country">Login as</label>
+                      <select class="form-select select2" id="select-country" name="role" required>
+                        <option value="patient">Patient</option>
+                        <option value="doctor">Doctor</option>
+                      </select>
                     </div>
 
                     <p>

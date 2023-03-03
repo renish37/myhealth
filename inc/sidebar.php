@@ -112,7 +112,7 @@
           </li>
           <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Apps &amp; Pages</span><i data-feather="more-horizontal"></i>
           </li>
-          <li class=" nav-item"><a class="d-flex align-items-center" href="patient_home.php"><i data-feather="mail"></i><span class="menu-title text-truncate" data-i18n="Email">Home</span></a>
+          <li class=" nav-item"><a class="d-flex align-items-center" href="index.php"><i data-feather="mail"></i><span class="menu-title text-truncate" data-i18n="Email">Home</span></a>
           </li>
           <li class=" nav-item"><a class="d-flex align-items-center" href="customers.php"><i data-feather="mail"></i><span class="menu-title text-truncate" data-i18n="Email">Users</span></a>
           </li>
