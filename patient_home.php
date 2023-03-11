@@ -36,10 +36,10 @@ include('inc/connection.php');
         <link rel="shortcut icon" type="image/x-icon" href="app-assets/images/logo/logo.png">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet"> 
       
-    <!-- BEGIN: Vendor CSS-->
-    <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/vendors.min.css">
-    <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/charts/apexcharts.css">
-    <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/extensions/toastr.min.css">
+   <!-- BEGIN: Vendor CSS-->
+   <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/forms/wizard/bs-stepper.min.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/forms/select/select2.min.css">
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
@@ -53,9 +53,14 @@ include('inc/connection.php');
 
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="app-assets/css/core/menu/menu-types/vertical-menu.min.css">
-    <link rel="stylesheet" type="text/css" href="app-assets/css/pages/dashboard-ecommerce.min.css">
-    <link rel="stylesheet" type="text/css" href="app-assets/css/plugins/charts/chart-apex.min.css">
-    <link rel="stylesheet" type="text/css" href="app-assets/css/plugins/extensions/ext-component-toastr.min.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/plugins/forms/form-validation.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/plugins/forms/form-wizard.min.css">
+    <!-- END: Page CSS-->
+
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <!-- END: Custom CSS-->
+
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
@@ -66,7 +71,7 @@ include('inc/connection.php');
   <!-- END: Head-->
 
   <!-- BEGIN: Body-->
-  <body class="vertical-layout vertical-menu-modern  navbar-floating footer-static" data-open="click" data-menu="vertical-menu-modern" data-col="">
+  <body  class="vertical-layout vertical-menu-modern  navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="">
 
     <?php
     if(isset($_SESSION['username'])){
@@ -81,6 +86,62 @@ include('inc/connection.php');
 
   <?php include('inc/sidebar.php');
   ?>
+
+ <!-- BEGIN: Content-->
+<div class="app-content content ">
+  <div class="content-overlay"></div>
+  <div class="header-navbar-shadow"></div>
+  <div class="content-wrapper container-xxl p-0">
+    <!-- <button class="btn btn-primary waves-effect waves-float waves-light" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal">Add </button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Record</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+  </div> -->
+  
+  <section id="card-demo-example">
+  <div class="row match-height">
+    <?php
+    $query = "SELECT * FROM `users` WHERE `role` = 'doctor'";
+    $result = mysqli_query($con,$query);
+    
+    while($row = mysqli_fetch_assoc($result)){
+      ?>
+    <div class="col-md-6 col-lg-4">
+      <div class="card">
+        <img class="card-img-top" src="app-assets/images/doctor.png" alt="Card image cap" />
+        <div class="card-body">
+          <h4 class="card-title"><?php echo $row['username'] ?></h4>
+          <p class="card-text">
+          <?php echo $row['description'] ?>
+          </p>
+          <a href="patient_appointments.php?id=<?php echo $row['uid']; ?>" class="btn btn-outline-primary">Book Appointment</a>
+        </div>
+      </div>
+    </div>
+    <?php
+  }
+  ?>
+  </div>
+</section>
+
+  </div>
+</div>
+    <!-- END: Content-->
 
     <!-- BEGIN: Content-->
     <div class="app-content content ">
@@ -103,6 +164,7 @@ include('inc/connection.php');
   </div>
 
   <hr />
+  
 
   <!-- Styling & Text Direction -->
   <div class="customizer-styling-direction px-2">
@@ -154,6 +216,8 @@ include('inc/connection.php');
 
   <hr />
 
+  
+
   <!-- Menu -->
   <div class="customizer-menu px-2">
     <div id="customizer-menu-collapsible" class="d-flex">
@@ -181,6 +245,7 @@ include('inc/connection.php');
     </div>
   </div>
   <hr />
+  
 
   <!-- Navbar -->
   <div class="customizer-navbar px-2">
@@ -197,6 +262,7 @@ include('inc/connection.php');
         <li class="color-box bg-dark" data-navbar-color="bg-dark"></li>
       </ul>
     </div>
+    
    
     <div class="sidenav-overlay"></div>
     <div class="drag-target"></div>
@@ -209,13 +275,15 @@ include('inc/connection.php');
     <!-- END: Footer-->
 
 
+   
     <!-- BEGIN: Vendor JS-->
     <script src="app-assets/vendors/js/vendors.min.js"></script>
     <!-- BEGIN Vendor JS-->
 
     <!-- BEGIN: Page Vendor JS-->
-    <script src="app-assets/vendors/js/charts/apexcharts.min.js"></script>
-    <script src="app-assets/vendors/js/extensions/toastr.min.js"></script>
+    <script src="app-assets/vendors/js/forms/wizard/bs-stepper.min.js"></script>
+    <script src="app-assets/vendors/js/forms/select/select2.full.min.js"></script>
+    <script src="app-assets/vendors/js/forms/validation/jquery.validate.min.js"></script>
     <!-- END: Page Vendor JS-->
 
     <!-- BEGIN: Theme JS-->
@@ -225,7 +293,7 @@ include('inc/connection.php');
     <!-- END: Theme JS-->
 
     <!-- BEGIN: Page JS-->
-    <script src="app-assets/js/scripts/pages/dashboard-ecommerce.min.js"></script>
+    <script src="app-assets/js/scripts/forms/form-wizard.min.js"></script>
     <!-- END: Page JS-->
 
     <script>
@@ -238,3 +306,20 @@ include('inc/connection.php');
   </body>
   <!-- END: Body-->
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

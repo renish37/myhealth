@@ -19,6 +19,9 @@ include('inc/connection.php');
 //    $username = $row_ud['username'];
 //   }
 // }
+$email = $_SESSION['email'];
+
+$doctor_email = "";
 
 ?>
 <!DOCTYPE html>
@@ -98,21 +101,15 @@ include('inc/connection.php');
           <div>
             <h3 class="fw-bolder mb-75">
             <?php
-            $sql = "SELECT * FROM `users` WHERE `role` = 'patient'";
+            $sql = "SELECT * FROM `appointment` WHERE `doctor_email` = '$email'";
             $result = mysqli_query($con,$sql);
             $num = mysqli_num_rows($result);
             if($num > 0){
-                $count = 0;
-                while($row = mysqli_fetch_assoc($result)){
-                    $count++;
-                }
-                echo $count;
-            }else{
-                echo "$count";
+                echo $num;
             }
             ?>
             </h3>
-            <span>Total Users</span>
+            <span>Total Patient's</span>
           </div>
           <div class="avatar bg-light-primary p-50">
             <span class="avatar-content">
@@ -126,12 +123,12 @@ include('inc/connection.php');
       <div class="card">
         <div class="card-body d-flex align-items-center justify-content-between">
           <div>
-            <h3 class="fw-bolder mb-75">4,567</h3>
-            <span>Paid Users</span>
+            <h3 class="fw-bolder mb-75">19</h3>
+            <span>Active Users</span>
           </div>
           <div class="avatar bg-light-danger p-50">
             <span class="avatar-content">
-              <i data-feather="user-plus" class="font-medium-4"></i>
+            <i data-feather="user-check" class="font-medium-4"></i>
             </span>
           </div>
         </div>
@@ -141,12 +138,17 @@ include('inc/connection.php');
       <div class="card">
         <div class="card-body d-flex align-items-center justify-content-between">
           <div>
-            <h3 class="fw-bolder mb-75">19,860</h3>
-            <span>Active Users</span>
+            <?php
+            $query1 = "SELECT * FROM `appointment` WHERE `doctor_email` = '$email' AND `status` = 'done'";
+            $result1 = mysqli_query($con,$query1);
+            $num = mysqli_num_rows($result1);
+            ?>
+            <h3 class="fw-bolder mb-75"><?php echo $num; ?></h3>
+            <span>Completed Appointment's</span>
           </div>
           <div class="avatar bg-light-success p-50">
             <span class="avatar-content">
-              <i data-feather="user-check" class="font-medium-4"></i>
+                <i data-feather="user-check" class="font-medium-4"></i>
             </span>
           </div>
         </div>
@@ -156,12 +158,17 @@ include('inc/connection.php');
       <div class="card">
         <div class="card-body d-flex align-items-center justify-content-between">
           <div>
-            <h3 class="fw-bolder mb-75">237</h3>
-            <span>Pending Users</span>
+          <?php
+            $query1 = "SELECT * FROM `appointment` WHERE `doctor_email` = '$email' AND `status` = 'pending'";
+            $result1 = mysqli_query($con,$query1);
+            $num = mysqli_num_rows($result1);
+            ?>
+            <h3 class="fw-bolder mb-75"><?php echo $num; ?></h3>
+            <span>Pending Appointment's</span>
           </div>
           <div class="avatar bg-light-warning p-50">
             <span class="avatar-content">
-              <i data-feather="user-x" class="font-medium-4"></i>
+              <i data-feather="user-plus" class="font-medium-4"></i>
             </span>
           </div>
         </div>
@@ -171,7 +178,7 @@ include('inc/connection.php');
   <!-- list and filter start -->
   <div class="card">
     <div class="card-body border-bottom">
-      <h4 class="card-title">Search & Filter</h4>
+      <h4 class="card-title">Latest Appointment's</h4>
       <div class="row">
         <div class="col-md-4 user_role"></div>
         <div class="col-md-4 user_plan"></div>

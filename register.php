@@ -40,7 +40,7 @@ if(isset($_POST['username'])){
     //INSERT INTO `users` (`uid`, `username`, `fname`, `lname`, `email`, `pwd`, `phone`, `status`, `edate`) VALUES (NULL, 'brij', 'brij', 'lathiya', 'brij@gmail.com', 'brij', '123567890', '1', CURRENT_TIMESTAMP);
 
     
-    $insert = "INSERT INTO `users` ( `username`,  `email`, `pwd`, `phone`,`role`, `status`, `edate`) VALUES ( '$username', '$email', '$password', NULL,'$role', '1', CURRENT_TIMESTAMP)";
+    $insert = "INSERT INTO `users` ( `username`,  `email`, `pwd`, `phone`, `description`,`role`, `status`, `edate`) VALUES ( '$username', '$email', '$password', NULL, NULL,'$role', '1', CURRENT_TIMESTAMP)";
     $result_insert = mysqli_query($con,$insert);    
 
     $_SESSION['username'] = $username;
