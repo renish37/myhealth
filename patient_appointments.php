@@ -387,7 +387,7 @@ $doctor_email = "";
         </thead>
         <tbody>
                 <?php
-               $query1 = "SELECT * FROM `appointment` WHERE `email` = '$email' AND `doctor_email` = '$doctor_email' AND `status` = 'done'";
+               $query1 = "SELECT * FROM `appointment` WHERE `email` = '$email' AND `doctor_email` = '$doctor_email'";
                $result1 = mysqli_query($con,$query1);
                $num = mysqli_num_rows($result1);
                while($row = mysqli_fetch_assoc($result1)){
