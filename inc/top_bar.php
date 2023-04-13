@@ -8,7 +8,7 @@
           <ul class="nav navbar-nav bookmark-icons">
             <li class="nav-item d-none d-lg-block"><a class="nav-link" href="home.php" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Home" aria-label="Home">Home</a></li>
 
-            <li class="nav-item d-none d-lg-block"><a class="nav-link" href="about.php" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Home" aria-label="Home">About Us</a></li>
+            
           </ul>
         </div>
         <ul class="nav navbar-nav align-items-center ms-auto">
