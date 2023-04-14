@@ -12,10 +12,10 @@ if(isset($_POST['submit'])){
     $date = $_POST['date'];
     $zipcode = $_POST['zipcode'];
     $country = $_POST['country'];
-    $language = $_POST['language'];
+    $subject = $_POST['subject'];
     $description = $_POST['description'];
 
-    $query = "INSERT INTO `doctor_data` (`id`, `username`, `email`, `phone`, `address`, `date`, `zipcode`, `country`, `language`, `description`, `created_at`) VALUES (NULL, '$username', ' $email', '$phone', '$address', '$date', '$zipcode', '$country', '$language', '$description', current_timestamp())";
+    $query = "INSERT INTO `doctor_data` (`id`, `username`, `email`, `phone`, `address`, `date`, `zipcode`, `country`, `subject`, `description`, `created_at`) VALUES (NULL, '$username', ' $email', '$phone', '$address', '$date', '$zipcode', '$country', '$subject', '$description', current_timestamp())";
     $result=  mysqli_query($con,$query);
     header("location: doctor_profile.php");
 }
@@ -201,14 +201,15 @@ if(isset($_POST['submit'])){
               </select>
             </div>
             <div class="col-12 col-sm-6 mb-1">
-              <label for="language" class="form-label">Language</label>
-              <select id="language" class="select2 form-select" name="language">
-                <option value="">Select Language</option>
-                <option value="en">English</option>
-                <option value="fr">French</option>
-                <option value="de">German</option>
-                <option value="pt">Portuguese</option>
-              </select>
+              <label for="subject" class="form-label">Subject</label>
+              <input
+                type="text"
+                class="form-control account-zip-code"
+                id="subject"
+                name="subject"
+                placeholder="Subject"
+                maxlength="10"
+              />
             </div>
             <div class="col-12 col-sm-12 mb-1">
             <div class="row">

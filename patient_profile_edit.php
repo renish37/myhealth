@@ -2,27 +2,30 @@
 // error_reporting(true);
 
 include('inc/connection.php');
-// if(!isset($_SESSION['uid']) ||  $_SESSION['uid']=='')
-// {
-//   header('Location: login.php');
-//   die;
-// }
-
-// get logged in user detail  
-// $sql_ud =  "SELECT * FROM users WHERE uid='".$_SESSION['uid']."'";
-
-// if ($res_ud = mysqli_query($link, $sql_ud)) {
-
-//   if (mysqli_num_rows($res_ud) > 0) {
-   
-//    $row_ud= mysqli_fetch_assoc($res_ud);
-//    $username = $row_ud['username'];
-//   }
-// }
 $email = $_SESSION['email'];
+
 if($_SESSION['role'] != "patient"){
   header("location: doctor_profile.php");
 }
+
+if(isset($_POST['submit'])){
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $address = $_POST['address'];
+    $date = $_POST['date'];
+    $zipcode = $_POST['zipcode'];
+    $country = $_POST['country'];
+    $subject = $_POST['subject'];
+    $description = $_POST['description'];
+
+    // INSERT INTO `patient_data` (`id`, `username`, `email`, `phone`, `address`, `date`, `zipcode`, `country`, `subject`, `description`, `created_at`) VALUES (NULL, 'Renish', 'renish@gmail.com', '1234567890', 'surat', '2023-04-14', '395006', 'India', 'polio', 'I have polio for 3 months..', current_timestamp());
+
+    $query = "INSERT INTO `patient_data` (`id`, `username`, `email`, `phone`, `address`, `date`, `zipcode`, `country`, `subject`, `description`, `created_at`) VALUES (NULL, '$username', ' $email', '$phone', '$address', '$date', '$zipcode', '$country', '$subject', '$description', current_timestamp())";
+    $result=  mysqli_query($con,$query);
+    header("location: patient_profile.php");
+}
+
 ?>
 <!DOCTYPE html>
 
@@ -92,7 +95,7 @@ if($_SESSION['role'] != "patient"){
           <div class="content-header-left col-md-9 col-12 mb-2">
             <div class="row breadcrumbs-top">
               <div class="col-12">
-                <h2 class="content-header-title float-start mb-0">Profile</h2>
+                <h2 class="content-header-title float-start mb-0">Add Data</h2>
                 
               </div>
             </div>
@@ -107,164 +110,135 @@ if($_SESSION['role'] != "patient"){
           </div>
         </div>
         <div class="content-body"><div id="user-profile">
-  <!-- profile header -->
-  <div class="row">
-    <div class="col-12">
-      <div class="card profile-header mb-2">
-        <!-- profile cover photo -->
-        <img
-          class="card-img-top"
-          src="app-assets/images/profile/user-uploads/timeline.jpg"
-          alt="User Profile Image"
-        />
-        <!--/ profile cover photo -->
 
-        <div class="position-relative">
-          <!-- profile picture -->
-          <div class="profile-img-container d-flex align-items-center">
-            <div class="profile-img">
-              <img
-                src="app-assets/images/portrait/small/avatar-s-2.jpg"
-                class="rounded img-fluid"
-                alt="Card image"
+         <!-- profile -->
+    <div class="card">
+      <div class="card-header border-bottom">
+        <h4 class="card-title">Details</h4>
+      </div>
+      <div class="card-body py-2 my-25">
+
+
+        <!-- form -->
+        <form class="validate-form mt-2 pt-50" action="patient_profile_edit.php" method="post">
+          <div class="row">
+            <div class="col-12 col-sm-6 mb-1">
+              <label class="form-label" for="accountFirstName">Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="accountFirstName"
+                name="username"
+                placeholder="John"
+                value="<?php echo $_SESSION['username']; ?>"
+                data-msg="Please enter first name"
+                readonly
               />
             </div>
-            <!-- profile title -->
-            <div class="profile-title ms-3">
-              <h2 class="text-white"><?php echo ucfirst($_SESSION['username']); ?></h2>
-              <p class="text-white"><?php echo ucfirst($_SESSION['role']); ?></p>
+            <div class="col-12 col-sm-6 mb-1">
+              <label class="form-label" for="accountEmail">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="accountEmail"
+                name="email"
+                placeholder="Email"
+                value="<?php echo $_SESSION['email']; ?>"
+                readonly
+              />
             </div>
-          </div>
-        </div>
-
-        <!-- tabs pill -->
-        <div class="profile-header-nav">
-          <!-- navbar -->
-          <nav class="navbar navbar-expand-md navbar-light justify-content-end justify-content-md-between w-100">
-            <button
-              class="btn btn-icon navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <i data-feather="align-justify" class="font-medium-5"></i>
-            </button>
-
-            <!-- collapse  -->
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <div class="profile-tabs d-flex justify-content-between flex-wrap mt-1 mt-md-0">
-                <ul class="nav nav-pills mb-0">
-                  <li class="nav-item">
-                    <!-- <a class="nav-link fw-bold active" href="#"> -->
-                      <!-- <span class="d-none d-md-block">Data</span> -->
-                      <!-- <i data-feather="rss" class="d-block d-md-none"></i> -->
-                    <!-- </a> -->
-                  </li>
-                </ul>
-                <!-- edit button -->
-                <a class="btn btn-primary" href="patient_profile_edit.php">
-                  <i data-feather="edit" class="d-block d-md-none"></i>
-                  <span class="fw-bold d-none d-md-block">Add</span>
-                </a>
+            <div class="col-12 col-sm-6 mb-1">
+              <label class="form-label" for="accountPhoneNumber">Phone Number</label>
+              <input
+                type="text"
+                class="form-control account-number-mask"
+                id="accountPhoneNumber"
+                name="phone"
+                placeholder="Phone Number"
+              />
+            </div>
+            <div class="col-12 col-sm-6 mb-1">
+              <label class="form-label" for="accountAddress">Address</label>
+              <input type="text" class="form-control" id="accountAddress" name="address" placeholder="Your Address" />
+            </div>
+            <div class="col-12 col-sm-6 mb-1">
+              <label class="form-label" for="accountState">Date</label>
+              <input type="date" class="form-control" id="accountState" name="date" placeholder="State" />
+            </div>
+            <div class="col-12 col-sm-6 mb-1">
+              <label class="form-label" for="accountZipCode">Zip Code</label>
+              <input
+                type="text"
+                class="form-control account-zip-code"
+                id="accountZipCode"
+                name="zipcode"
+                placeholder="Code"
+                maxlength="6"
+              />
+            </div>
+            <div class="col-12 col-sm-6 mb-1">
+              <label class="form-label" for="country">Country</label>
+              <select id="country" class="select2 form-select" name="country">
+                <option value="">Select Country</option>
+                <option value="Australia">Australia</option>
+                <option value="Bangladesh">Bangladesh</option>
+                <option value="Belarus">Belarus</option>
+                <option value="Brazil">Brazil</option>
+                <option value="Canada">Canada</option>
+                <option value="China">China</option>
+                <option value="France">France</option>
+                <option value="Germany">Germany</option>
+                <option value="India">India</option>
+                <option value="Indonesia">Indonesia</option>
+                <option value="Israel">Israel</option>
+                <option value="Italy">Italy</option>
+                <option value="Japan">Japan</option>
+                <option value="Korea">Korea, Republic of</option>
+                <option value="Mexico">Mexico</option>
+                <option value="Philippines">Philippines</option>
+                <option value="Russia">Russian Federation</option>
+                <option value="South Africa">South Africa</option>
+                <option value="Thailand">Thailand</option>
+                <option value="Turkey">Turkey</option>
+                <option value="Ukraine">Ukraine</option>
+                <option value="United Arab Emirates">United Arab Emirates</option>
+                <option value="United Kingdom">United Kingdom</option>
+                <option value="United States">United States</option>
+              </select>
+            </div>
+            <div class="col-12 col-sm-6 mb-1">
+              <label for="subject" class="form-label">Subject</label>
+              <input
+                type="text"
+                class="form-control account-zip-code"
+                id="subject"
+                name="subject"
+                placeholder="Subject"
+                maxlength="10"
+              />
+            </div>
+            <div class="col-12 col-sm-12 mb-1">
+            <div class="row">
+            <div class="col-12">
+              <div class="mb-1">
+                <label class="form-label" for="exampleFormControlTextarea1">Describe Your illness...</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Description" name="description"></textarea>
               </div>
             </div>
-            <!--/ collapse  -->
-          </nav>
-          <!--/ navbar -->
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--/ profile header -->
-
-
-  <div class="row">
-    <?php
-    $query = "SELECT * FROM `patient_data` WHERE `email` = '$email'";
-    $result = mysqli_query($con,$query);
-    $num = mysqli_num_rows($result);
-    
-    if($num > 0){
-      while($row = mysqli_fetch_assoc($result)){
-      ?>
-      <div class="col-md-6 col-lg-4">
-        <div class="card">
-          <h6 class="card-header">Subject : <?php echo ucfirst($row['subject']); ?></h6>
-          <div class="card-body">
-            <blockquote class="blockquote mb-0">
-              <p>
-                <b> Description : </b>
-                <?php
-                echo ucfirst($row['description']);
-                ?>
-              </p>
-              <p>
-                <b> Address : </b>
-                <?php
-                echo ucfirst($row['address']);
-                ?>
-              </p>
-              <p>
-                <b> Date : </b>
-                <?php
-                echo ucfirst($row['date']);
-                ?>
-              </p>
-              <p>
-                <b> Zipcode : </b>
-                <?php
-                echo ucfirst($row['zipcode']);
-                ?>
-              </p>
-              <footer class="blockquote-footer">
-                <?php
-                  if($_SESSION['role']=="doctor"){
-                    echo "Dr.";
-                  }
-                ?>
-                <cite title="Source Title"> <?php
-                 echo ucfirst($_SESSION['username']);
-                ?></cite>
-              </footer>
-            </blockquote>
           </div>
-        </div>
-      </div>
-      <?php
-        
-      }
-      ?>
-      <?php
-    }else{
-      ?>
-      <div class="col-md-6 col-lg-4">
-      <div class="card">
-        <h6 class="card-header">Not Available</h6>
-        <div class="card-body">
-          <blockquote class="blockquote mb-0">
-            <p>
-             
-            </p>
-            <footer class="blockquote-footer">
-              <!-- Someone famous in -->
-              <cite title="Source Title"></cite>
-            </footer>
-          </blockquote>
-        </div>
+            </div>
+            <div class="col-12">
+              <button type="submit" name="submit" class="btn btn-primary mt-1 me-1">Save changes</button>
+              <button type="reset" class="btn btn-outline-secondary mt-1">Discard</button>
+            </div>
+          </div>
+        </form>
+        <!--/ form -->
       </div>
     </div>
-      <?php
-    }
-    ?>
-    
-    
-  </div>
 
-  
-</div>
+        
+        </div>
 
         </div>
       </div>

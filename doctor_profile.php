@@ -20,6 +20,9 @@ include('inc/connection.php');
 //   }
 // }
 $email = $_SESSION['email'];
+if($_SESSION['role'] != "doctor"){
+  header("location: patient_profile.php");
+}
 ?>
 <!DOCTYPE html>
 
@@ -155,10 +158,10 @@ $email = $_SESSION['email'];
               <div class="profile-tabs d-flex justify-content-between flex-wrap mt-1 mt-md-0">
                 <ul class="nav nav-pills mb-0">
                   <li class="nav-item">
-                    <a class="nav-link fw-bold active" href="#">
-                      <span class="d-none d-md-block">Data</span>
-                      <i data-feather="rss" class="d-block d-md-none"></i>
-                    </a>
+                    <!-- <a class="nav-link fw-bold active" href="#"> -->
+                      <!-- <span class="d-none d-md-block">Data</span> -->
+                      <!-- <i data-feather="rss" class="d-block d-md-none"></i> -->
+                    <!-- </a> -->
                   </li>
                 </ul>
                 <!-- edit button -->
@@ -178,7 +181,87 @@ $email = $_SESSION['email'];
   <!--/ profile header -->
 
 
-  
+  <div class="row">
+    <?php
+    $query = "SELECT * FROM `doctor_data` WHERE `email` = '$email'";
+    $result = mysqli_query($con,$query);
+    $num = mysqli_num_rows($result);
+    
+    if($num > 0){
+      while($row = mysqli_fetch_assoc($result)){
+      ?>
+      <div class="col-md-6 col-lg-4">
+        <div class="card">
+          <h6 class="card-header">Subject : <?php echo ucfirst($row['subject']); ?></h6>
+          <div class="card-body">
+            <blockquote class="blockquote mb-0">
+              <p>
+                <b> Description : </b>
+                <?php
+                echo ucfirst($row['description']);
+                ?>
+              </p>
+              <p>
+                <b> Address : </b>
+                <?php
+                echo ucfirst($row['address']);
+                ?>
+              </p>
+              <p>
+                <b> Date : </b>
+                <?php
+                echo ucfirst($row['date']);
+                ?>
+              </p>
+              <p>
+                <b> Zipcode : </b>
+                <?php
+                echo ucfirst($row['zipcode']);
+                ?>
+              </p>
+              <footer class="blockquote-footer">
+                <?php
+                  if($_SESSION['role']=="doctor"){
+                    echo "Dr.";
+                  }
+                ?>
+                <cite title="Source Title"> <?php
+                 echo ucfirst($_SESSION['username']);
+                ?></cite>
+              </footer>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+      <?php
+        
+      }
+      ?>
+      <?php
+    }else{
+      ?>
+      <div class="col-md-6 col-lg-4">
+      <div class="card">
+        <h6 class="card-header">Not Available</h6>
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <p>
+             
+            </p>
+            <footer class="blockquote-footer">
+              <!-- Someone famous in -->
+              <cite title="Source Title"></cite>
+            </footer>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+      <?php
+    }
+    ?>
+    
+    
+  </div>
 
   
 </div>
