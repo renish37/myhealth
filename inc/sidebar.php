@@ -117,12 +117,15 @@
         <?php
         if($_SESSION['role'] == "doctor"){
        ?>
-        <li class=" nav-item"><a class="d-flex align-items-center" href="doctor_patient_home.php"><i data-feather="mail"></i><span class="menu-title text-truncate" data-i18n="Email">Patient's</span></a>
+        <li class=" nav-item"><a class="d-flex align-items-center" href="doctor_patient_home.php"><i data-feather="mail"></i><span class="menu-title text-truncate" data-i18n="Email">Patient's Appointment</span></a>
+        </li>
+        <li class=" nav-item"><a class="d-flex align-items-center" href="doctor_patient_list.php"><i data-feather="mail"></i><span class="menu-title text-truncate" data-i18n="Email">Patient's</span></a>
         </li>
         <?php   
         }
         ?>
-          <li class=" nav-item"><a class="d-flex align-items-center" href="customers.php"><i data-feather="mail"></i><span class="menu-title text-truncate" data-i18n="Email">Users</span></a>
+        
+          <li class=" nav-item"><a class="d-flex align-items-center" href="patient_profile.php"><i data-feather="mail"></i><span class="menu-title text-truncate" data-i18n="Email">My Profile</span></a>
           </li>
         </ul>
       </div>

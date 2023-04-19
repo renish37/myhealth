@@ -123,7 +123,7 @@ include('inc/connection.php');
       ?>
     <div class="col-md-6 col-lg-4">
       <div class="card">
-        <img class="card-img-top" src="app-assets/images/doctor.png" alt="Card image cap" />
+        <img class="card-img-top" src="app-assets/images/414.jpg" alt="Card image cap" />
         <div class="card-body">
           <h4 class="card-title"><?php echo $row['username'] ?></h4>
           <p class="card-text">

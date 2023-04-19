@@ -20,9 +20,8 @@ include('inc/connection.php');
 //   }
 // }
 $email = $_SESSION['email'];
-if($_SESSION['role'] != "patient"){
-  header("location: doctor_profile.php");
-}
+$p_email = $_SESSION['p_email'];
+
 ?>
 <!DOCTYPE html>
 
@@ -92,7 +91,7 @@ if($_SESSION['role'] != "patient"){
           <div class="content-header-left col-md-9 col-12 mb-2">
             <div class="row breadcrumbs-top">
               <div class="col-12">
-                <h2 class="content-header-title float-start mb-0">Profile</h2>
+                <h2 class="content-header-title float-start mb-0">Patient data</h2>
                 
               </div>
             </div>
@@ -100,90 +99,19 @@ if($_SESSION['role'] != "patient"){
           <div class="content-header-right text-md-end col-md-3 col-12 d-md-block d-none">
             <div class="mb-1 breadcrumb-right">
               <div class="dropdown">
-                <!-- <button class="btn-icon btn btn-primary btn-round btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="grid"></i></button>
-                <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item" href="app-todo.html"><i class="me-1" data-feather="check-square"></i><span class="align-middle">Todo</span></a><a class="dropdown-item" href="app-chat.html"><i class="me-1" data-feather="message-square"></i><span class="align-middle">Chat</span></a><a class="dropdown-item" href="app-email.html"><i class="me-1" data-feather="mail"></i><span class="align-middle">Email</span></a><a class="dropdown-item" href="app-calendar.html"><i class="me-1" data-feather="calendar"></i><span class="align-middle">Calendar</span></a></div> -->
+               
+                
               </div>
             </div>
           </div>
         </div>
         <div class="content-body"><div id="user-profile">
-  <!-- profile header -->
-  <div class="row">
-    <div class="col-12">
-      <div class="card profile-header mb-2">
-        <!-- profile cover photo -->
-        <img
-          class="card-img-top"
-          src="app-assets/images/profile/user-uploads/timeline.jpg"
-          alt="User Profile Image"
-        />
-        <!--/ profile cover photo -->
 
-        <div class="position-relative">
-          <!-- profile picture -->
-          <div class="profile-img-container d-flex align-items-center">
-            <div class="profile-img">
-              <img
-                src="app-assets/images/415.jpg"
-                class="rounded img-fluid"
-                alt="Card image"
-              />
-            </div>
-            <!-- profile title -->
-            <div class="profile-title ms-3">
-              <h2 class="text-white"><?php echo ucfirst($_SESSION['username']); ?></h2>
-              <p class="text-white"><?php echo ucfirst($_SESSION['role']); ?></p>
-            </div>
-          </div>
-        </div>
-
-        <!-- tabs pill -->
-        <div class="profile-header-nav">
-          <!-- navbar -->
-          <nav class="navbar navbar-expand-md navbar-light justify-content-end justify-content-md-between w-100">
-            <button
-              class="btn btn-icon navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <i data-feather="align-justify" class="font-medium-5"></i>
-            </button>
-
-            <!-- collapse  -->
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <div class="profile-tabs d-flex justify-content-between flex-wrap mt-1 mt-md-0">
-                <ul class="nav nav-pills mb-0">
-                  <li class="nav-item">
-                    <!-- <a class="nav-link fw-bold active" href="#"> -->
-                      <!-- <span class="d-none d-md-block">Data</span> -->
-                      <!-- <i data-feather="rss" class="d-block d-md-none"></i> -->
-                    <!-- </a> -->
-                  </li>
-                </ul>
-                <!-- edit button -->
-                <a class="btn btn-primary" href="patient_profile_edit.php">
-                  <i data-feather="edit" class="d-block d-md-none"></i>
-                  <span class="fw-bold d-none d-md-block">Add</span>
-                </a>
-              </div>
-            </div>
-            <!--/ collapse  -->
-          </nav>
-          <!--/ navbar -->
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--/ profile header -->
 
 
   <div class="row">
     <?php
-    $query = "SELECT * FROM `patient_data` WHERE `email` = '$email'";
+    $query = "SELECT * FROM `patient_data` WHERE `email` = '$p_email'";
     $result = mysqli_query($con,$query);
     $num = mysqli_num_rows($result);
     

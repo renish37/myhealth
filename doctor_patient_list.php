@@ -20,9 +20,6 @@ include('inc/connection.php');
 //   }
 // }
 $email = $_SESSION['email'];
-if($_SESSION['role'] != "patient"){
-  header("location: doctor_profile.php");
-}
 ?>
 <!DOCTYPE html>
 
@@ -38,30 +35,37 @@ if($_SESSION['role'] != "patient"){
        <link rel="apple-touch-icon" href="app-assets/images/ico/apple-icon-120.html">
         <link rel="shortcut icon" type="image/x-icon" href="app-assets/images/logo/logo.png">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet"> 
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
+      
+   <!-- BEGIN: Vendor CSS-->
+   <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/forms/wizard/bs-stepper.min.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/forms/select/select2.min.css">
+    <!-- END: Vendor CSS-->
 
-<!-- BEGIN: Vendor CSS-->
-<link rel="stylesheet" type="text/css" href="app-assets/vendors/css/vendors.min.css">
-<!-- END: Vendor CSS-->
+    <!-- BEGIN: Theme CSS-->
+    <link rel="stylesheet" type="text/css" href="app-assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/bootstrap-extended.min.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/colors.min.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/components.min.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/themes/dark-layout.min.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/themes/bordered-layout.min.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/themes/semi-dark-layout.min.css">
 
-<!-- BEGIN: Theme CSS-->
-<link rel="stylesheet" type="text/css" href="app-assets/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="app-assets/css/bootstrap-extended.min.css">
-<link rel="stylesheet" type="text/css" href="app-assets/css/colors.min.css">
-<link rel="stylesheet" type="text/css" href="app-assets/css/components.min.css">
-<link rel="stylesheet" type="text/css" href="app-assets/css/themes/dark-layout.min.css">
-<link rel="stylesheet" type="text/css" href="app-assets/css/themes/bordered-layout.min.css">
-<link rel="stylesheet" type="text/css" href="app-assets/css/themes/semi-dark-layout.min.css">
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="app-assets/css/core/menu/menu-types/vertical-menu.min.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/plugins/forms/form-validation.css">
+    <link rel="stylesheet" type="text/css" href="app-assets/css/plugins/forms/form-wizard.min.css">
+    <!-- END: Page CSS-->
 
-<!-- BEGIN: Page CSS-->
-<link rel="stylesheet" type="text/css" href="app-assets/css/core/menu/menu-types/vertical-menu.min.css">
-<link rel="stylesheet" type="text/css" href="app-assets/css/pages/page-profile.min.css">
-<!-- END: Page CSS-->
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <!-- END: Custom CSS-->
 
-<!-- BEGIN: Custom CSS-->
-<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-<!-- END: Custom CSS-->
+    <!-- END: Page CSS-->
 
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <!-- END: Custom CSS-->
 
   </head>
   <!-- END: Head-->
@@ -88,186 +92,56 @@ if($_SESSION['role'] != "patient"){
   <div class="content-overlay"></div>
   <div class="header-navbar-shadow"></div>
   <div class="content-wrapper container-xxl p-0">
-        <div class="content-header row">
-          <div class="content-header-left col-md-9 col-12 mb-2">
-            <div class="row breadcrumbs-top">
-              <div class="col-12">
-                <h2 class="content-header-title float-start mb-0">Profile</h2>
-                
-              </div>
-            </div>
-          </div>
-          <div class="content-header-right text-md-end col-md-3 col-12 d-md-block d-none">
-            <div class="mb-1 breadcrumb-right">
-              <div class="dropdown">
-                <!-- <button class="btn-icon btn btn-primary btn-round btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="grid"></i></button>
-                <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item" href="app-todo.html"><i class="me-1" data-feather="check-square"></i><span class="align-middle">Todo</span></a><a class="dropdown-item" href="app-chat.html"><i class="me-1" data-feather="message-square"></i><span class="align-middle">Chat</span></a><a class="dropdown-item" href="app-email.html"><i class="me-1" data-feather="mail"></i><span class="align-middle">Email</span></a><a class="dropdown-item" href="app-calendar.html"><i class="me-1" data-feather="calendar"></i><span class="align-middle">Calendar</span></a></div> -->
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="content-body"><div id="user-profile">
-  <!-- profile header -->
-  <div class="row">
-    <div class="col-12">
-      <div class="card profile-header mb-2">
-        <!-- profile cover photo -->
-        <img
-          class="card-img-top"
-          src="app-assets/images/profile/user-uploads/timeline.jpg"
-          alt="User Profile Image"
-        />
-        <!--/ profile cover photo -->
+    <!-- <button class="btn btn-primary waves-effect waves-float waves-light" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal">Add </button>
 
-        <div class="position-relative">
-          <!-- profile picture -->
-          <div class="profile-img-container d-flex align-items-center">
-            <div class="profile-img">
-              <img
-                src="app-assets/images/415.jpg"
-                class="rounded img-fluid"
-                alt="Card image"
-              />
-            </div>
-            <!-- profile title -->
-            <div class="profile-title ms-3">
-              <h2 class="text-white"><?php echo ucfirst($_SESSION['username']); ?></h2>
-              <p class="text-white"><?php echo ucfirst($_SESSION['role']); ?></p>
-            </div>
-          </div>
-        </div>
-
-        <!-- tabs pill -->
-        <div class="profile-header-nav">
-          <!-- navbar -->
-          <nav class="navbar navbar-expand-md navbar-light justify-content-end justify-content-md-between w-100">
-            <button
-              class="btn btn-icon navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <i data-feather="align-justify" class="font-medium-5"></i>
-            </button>
-
-            <!-- collapse  -->
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <div class="profile-tabs d-flex justify-content-between flex-wrap mt-1 mt-md-0">
-                <ul class="nav nav-pills mb-0">
-                  <li class="nav-item">
-                    <!-- <a class="nav-link fw-bold active" href="#"> -->
-                      <!-- <span class="d-none d-md-block">Data</span> -->
-                      <!-- <i data-feather="rss" class="d-block d-md-none"></i> -->
-                    <!-- </a> -->
-                  </li>
-                </ul>
-                <!-- edit button -->
-                <a class="btn btn-primary" href="patient_profile_edit.php">
-                  <i data-feather="edit" class="d-block d-md-none"></i>
-                  <span class="fw-bold d-none d-md-block">Add</span>
-                </a>
-              </div>
-            </div>
-            <!--/ collapse  -->
-          </nav>
-          <!--/ navbar -->
-        </div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Record</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
-  <!--/ profile header -->
-
-
-  <div class="row">
-    <?php
-    $query = "SELECT * FROM `patient_data` WHERE `email` = '$email'";
-    $result = mysqli_query($con,$query);
-    $num = mysqli_num_rows($result);
-    
-    if($num > 0){
-      while($row = mysqli_fetch_assoc($result)){
-      ?>
-      <div class="col-md-6 col-lg-4">
-        <div class="card">
-          <h6 class="card-header">Subject : <?php echo ucfirst($row['subject']); ?></h6>
-          <div class="card-body">
-            <blockquote class="blockquote mb-0">
-              <p>
-                <b> Description : </b>
-                <?php
-                echo ucfirst($row['description']);
-                ?>
-              </p>
-              <p>
-                <b> Address : </b>
-                <?php
-                echo ucfirst($row['address']);
-                ?>
-              </p>
-              <p>
-                <b> Date : </b>
-                <?php
-                echo ucfirst($row['date']);
-                ?>
-              </p>
-              <p>
-                <b> Zipcode : </b>
-                <?php
-                echo ucfirst($row['zipcode']);
-                ?>
-              </p>
-              <footer class="blockquote-footer">
-                <?php
-                  if($_SESSION['role']=="doctor"){
-                    echo "Dr.";
-                  }
-                ?>
-                <cite title="Source Title"> <?php
-                 echo ucfirst($_SESSION['username']);
-                ?></cite>
-              </footer>
-            </blockquote>
-          </div>
-        </div>
-      </div>
-      <?php
-        
-      }
-      ?>
-      <?php
-    }else{
-      ?>
-      <div class="col-md-6 col-lg-4">
-      <div class="card">
-        <h6 class="card-header">Not Available</h6>
-        <div class="card-body">
-          <blockquote class="blockquote mb-0">
-            <p>
-             
-            </p>
-            <footer class="blockquote-footer">
-              <!-- Someone famous in -->
-              <cite title="Source Title"></cite>
-            </footer>
-          </blockquote>
-        </div>
-      </div>
-    </div>
-      <?php
-    }
-    ?>
-    
-    
-  </div>
-
-  
 </div>
-
+  </div> -->
+  
+  <section id="card-demo-example">
+  <div class="row match-height">
+    <?php
+    $query = "SELECT * FROM `users` WHERE `role` = 'patient'";
+    $result = mysqli_query($con,$query);
+    
+    while($row = mysqli_fetch_assoc($result)){
+      ?>
+<?php $_SESSION['p_email']= $row['email']; ?>
+    <div class="col-md-6 col-lg-4">
+      <div class="card">
+        <img class="card-img-top" src="app-assets/images/415.jpg" alt="Card image cap" />
+        <div class="card-body">
+          <h4 class="card-title"><?php echo $row['username'] ?></h4>
+          <p class="card-text">
+          <?php echo $row['description'] ?>
+          </p>
+          <a href="doctor_patient_data.php" class="btn btn-outline-primary">View Data</a>
         </div>
       </div>
+    </div>
+
+    <?php
+  }
+  ?>
+  </div>
+</section>
+
+  </div>
 </div>
     <!-- END: Content-->
 
@@ -409,6 +283,9 @@ if($_SESSION['role'] != "patient"){
     <!-- BEGIN Vendor JS-->
 
     <!-- BEGIN: Page Vendor JS-->
+    <script src="app-assets/vendors/js/forms/wizard/bs-stepper.min.js"></script>
+    <script src="app-assets/vendors/js/forms/select/select2.full.min.js"></script>
+    <script src="app-assets/vendors/js/forms/validation/jquery.validate.min.js"></script>
     <!-- END: Page Vendor JS-->
 
     <!-- BEGIN: Theme JS-->
@@ -418,7 +295,7 @@ if($_SESSION['role'] != "patient"){
     <!-- END: Theme JS-->
 
     <!-- BEGIN: Page JS-->
-    <script src="app-assets/js/scripts/pages/page-profile.min.js"></script>
+    <script src="app-assets/js/scripts/forms/form-wizard.min.js"></script>
     <!-- END: Page JS-->
 
     <script>

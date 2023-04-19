@@ -1,516 +1,598 @@
 <!DOCTYPE html>
-<!--
-Template Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
-Author: PixInvent
-Website: http://www.pixinvent.com/
-Contact: hello@pixinvent.com
-Follow: www.twitter.com/pixinvents
-Like: www.facebook.com/pixinvents
-Purchase: https://1.envato.market/vuexy_admin
-Renew Support: https://1.envato.market/vuexy_admin
-License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
-
--->
-<html class="loading" lang="en" data-textdirection="ltr">
-<!-- BEGIN: Head-->
-
-<!-- Mirrored from pixinvent.com/demo/vuexy-html-bootstrap-admin-template/html/ltr/vertical-menu-template/layout-collapsed-menu.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 13 Dec 2021 08:36:02 GMT -->
-
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui">
-    <meta name="description"
-        content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
-    <meta name="keywords"
-        content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
-    <meta name="author" content="PIXINVENT">
-    <title>Layout collapsed menu - Vuexy - Bootstrap HTML admin template</title>
-    <link rel="apple-touch-icon" href="app-assets/images/ico/apple-icon-120.html">
-    <link rel="shortcut icon" type="image/x-icon"
-        href="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/app-assets/images/ico/favicon.ico">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600"
-        rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyHealth</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Amaranth&family=Josefin+Sans&family=Montserrat:wght@100;300&family=Padauk&family=Smooch&display=swap');
 
-    <!-- BEGIN: Vendor CSS-->
-    <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/vendors.min.css">
-    <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/charts/apexcharts.css">
-    <link rel="stylesheet" type="text/css" href="app-assets/vendors/css/extensions/toastr.min.css">
-    <!-- END: Vendor CSS-->
 
-    <!-- BEGIN: Theme CSS-->
-    <link rel="stylesheet" type="text/css" href="app-assets/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="app-assets/css/bootstrap-extended.min.css">
-    <link rel="stylesheet" type="text/css" href="app-assets/css/colors.min.css">
-    <link rel="stylesheet" type="text/css" href="app-assets/css/components.min.css">
-    <link rel="stylesheet" type="text/css" href="app-assets/css/themes/dark-layout.min.css">
-    <link rel="stylesheet" type="text/css" href="app-assets/css/themes/bordered-layout.min.css">
-    <link rel="stylesheet" type="text/css" href="app-assets/css/themes/semi-dark-layout.min.css">
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    <!-- BEGIN: Page CSS-->
-    <link rel="stylesheet" type="text/css" href="app-assets/css/core/menu/menu-types/vertical-menu.min.css">
-    <link rel="stylesheet" type="text/css" href="app-assets/css/pages/dashboard-ecommerce.min.css">
-    <link rel="stylesheet" type="text/css" href="app-assets/css/plugins/charts/chart-apex.min.css">
-    <link rel="stylesheet" type="text/css" href="app-assets/css/plugins/extensions/ext-component-toastr.min.css">
-    <!-- END: Page CSS-->
+html,body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
 
-    <!-- BEGIN: Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <!-- END: Custom CSS-->
+body{
+    background: #222;
+    margin: 0px;
+}
 
-</head>
-<!-- END: Head-->
+nav{
+    border: 1px solid black;
+    padding: 25px;
+    background-color: black;
+    color: white;
+}
 
-<!-- BEGIN: Body-->
+.main_nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-<body class="vertical-layout vertical-menu-modern  navbar-floating footer-static   menu-collapsed" data-open="click"
-    data-menu="vertical-menu-modern" data-col="">
+.main_nav a{
+    color: white;
+    text-decoration: none;
+}
 
-    <!-- BEGIN: Header-->
-    <?php
-    include('inc/top_bar.php'); 
-    if(isset($_SESSION['username'])){
-      include('inc/sidebar.php');
+.logo{
+    font-size: 18px;
+    font-family: cursive;
+}
+
+.menubar{
+    font-size: 18px;
+}
+
+.container{
+    max-width: 100%;
+    /* margin: 0px 20px; */
+    border: 1px solid black;
+    background-image: url(app-assets/images/414.jpg);
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color:  #302f2f;
+    background-blend-mode: overlay;
+}
+
+@media(max-width: 1490px){
+
+    html,body{
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
     }
-    ?>
 
-    <!-- END: Header-->
+    .container{
+        padding: 20px;
+    }
+
+}
+
+@media(max-width: 414px){
+
+    html,body{
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
+
+ .about1_lorem{
+    margin-left: -50px;
+    margin-top: 20px;
+ }
+
+ .about2_lorem h2{
+    margin-left: 20px;
+ }
+
+ .about2_img{
+    margin-top: 20px;
+ }
+
+ .sub_info1{
+    padding: 30px;
+ }
+
+ input.submit_btn{
+    width: 60%;
+ }
+
+ .about_1{
+    flex-wrap: wrap;
+}
+
+.about_2{
+    flex-wrap: wrap;
+}
+
+}
+
+
+
+.info1{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 288px;
+}
+
+.info1 h1{
+    font-size: 65px;
+    font-weight: 600;
+    font-family: 'Amaranth', sans-serif;
+}
+
+@media(max-width: 375px){
+
+    html,body{
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
+
+    .info1 h1{
+        font-size: 40px;
+    }
+
+    .about1_lorem{
+        margin-left: -10px;
+    }
+
+    .about_1{
+        flex-wrap: wrap;
+    }
+
+    .about_2{
+        flex-wrap: wrap;
+    }
+   
+   }
+
+.info1 h3{
+    font-size: 22px;
+    margin-top: 10px;
+    color: #bbbbbb;
+    
+}
+
+.info1_btn{
+    margin-top: 20px;
+}
+
+.info1_btn button{
+    padding: 10px 20px 10px 20px;
+    border-radius: 7px;
+    border: none;
+}
+
+.section2{
+    
+    margin-top: 150px;
+}
+
+.heading1 h1{
+    color: white;
+    font-size: 35px;
+    text-align: center;
+}
+
+@media(max-width: 780px){
+
+    html,body{
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
+
+    .container{
+        padding: 20px;
+    }
+
+}
+
+@media(max-width: 320px){
+
+    html,body{
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
+
+    .info1 h1{
+        font-size: 30px;
+    }
+
+    .about1_lorem{
+        margin-left: -10px;
+    }
+
+    .about_1{
+        flex-wrap: wrap;
+    }
+
+    .about_2{
+        flex-wrap: wrap;
+    }
+   
+   }
+
+
+.container_2{
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.about_1{
+    display: flex;
+    /* flex-wrap: wrap; */
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid black; */
+    margin-top: 75px;
+}
+
+.about1_img{
+    max-width: 100%;
+}
+
+.about1_img img{
+    width: 100%;
+}
+
+.about1_lorem{
+    /* position: relative;
+    left: 60px; */
+    margin-left: 60px;
+    color: white;
+}
+
+.about1_lorem h2{
+    width: 89%;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 20px;
+}
+
+
+.section3{
+    
+    margin-top: 150px;
+}
+
+.heading2 h1{
+    color: white;
+    font-size: 35px;
+    text-align: center;
+}
+
+
+.container_3{
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.about_2{
+    display: flex;
+    /* flex-wrap: wrap; */
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid black; */
+    margin-top: 75px;
+}
+
+.about2_img{
+    max-width: 100%;
+}
+
+.about2_img img{
+    width: 100%;
+}
+
+.about2_lorem{
+    position: relative;
+    left: 0px;
+    color: white;
+}
+
+.about2_lorem h2{
+    width: 89%;
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 20px;
+}
+
+section.sub_section6 {
+    margin-top: 150px;
+}
+
+.main_info{
+    /* border: 1px solid white; */
+    display: flex;
+    margin-top: 75px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.sub_info1 {
+    width: 635px;
+}
+
+.sub_info1 h1{
+    color: white;
+    font-size: 25px;
+}
+
+.sub_info2{
+    /* border: 1px solid white;  */
+    /* width: 475px;
+    padding-left: 48px; */
+    margin: 46px;
+}
+
+.sub_info2 h1{
+    color: white;
+    font-size: 25px;
+}
+
+.get_ip {
+    display: flex;
+    flex-direction: column;
+    margin-top: 38px;
+    flex-wrap: wrap;
+}
+
+input.ip_1 {
+    width: 100%;
+    padding: 15px;
+    border-radius: 5px;
+    border: 0px;
+    background-color: #333;
+    margin: 10px 0px;
+}
+
+textarea {
+    width: 100%;
+    padding: 15px;
+    border-radius: 5px;
+    border: 0px;
+    background-color: #333;
+    margin: 10px 0px;
+}
+
+input.submit_btn {
+    width: 40%;
+    padding: 14px;
+    border-radius: 51px;
+    letter-spacing: 4px;
+    color: white;
+    background-color: #b2c251;    
+    margin-top: 15px;
+
+}
+
+.info2_txt .p1{
+    color: #2c3e50;
+    margin-top: 20px;
+}
+
+.info2_txt .p2{
+    color: rgba(255, 255, 255, 0.3);
+    margin-top: 11px;
+}
+
+.info2_txt {
+    margin-top: 33px;
+}
+
+footer {
+    margin-top: 200px;
+    padding-bottom: 80px;
+}
+
+footer p{
+        text-align: center;
+        font-size: 17px;
+        color: rgba(255, 255, 255, 0.3);
+}
+
+.social_logo {
+    margin-top: 70px;
+}
+
+.social_logo ul{
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    flex-wrap: wrap;
+}
+
+.social_logo ul li{
+    margin: 15px 15px;
+}
+
+.social_logo ul li{
+    list-style: none;
+}
+
+i.fa-brands.fa-facebook-f {
+    padding: 10px 15px 10px 15px;
+    border-radius: 43px;
+    background-color: #333;
+    color: #b2c251;
+    border: 0px;
+}
+
+i.fa-brands {
+    padding: 10px 11px 10px 11px;
+    border-radius: 43px;
+    background-color: #333;
+    color: #b2c251;
+    border: 0px;
+}
 
 
 
 
-    <!-- BEGIN: Content-->
-    <div class="app-content content ">
-        <div class="content-overlay"></div>
-        <div class="header-navbar-shadow"></div>
-        <div class="content-wrapper container-xxl p-0">
-            <div class="content-header row">
-                <div class="content-header col-md-9 col-12 mb-2">
-                    <div class="row breadcrumbs-top">
-                        <div class="col-12">
-                            <h2 class="content-header-title float-start mb-0">Home</h2>
-                            <div class="breadcrumb-wrapper">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">Home</a>
-                                    </li>
-                                    
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="content-detached">
-                <div class="content-body">
-                    <!-- Blog Detail -->
-                    <div class="blog-detail-wrapper">
-                        <div class="row">
-                            <!-- Blog -->
-                            <div class="col-12">
-                                <div class="card">
-                                    <img src="app-assets/images/portrait/home.jpg" class="img-fluid card-img-top"
-                                        alt="Blog Detail Pic" style="height: 46rem;width: 100%;" />
-                                    <div class="card-body">
-                                        <h4 class="card-title">The Best Features Coming to iOS and Web design</h4>
-                                        <div class="d-flex">
-                                            <div class="avatar me-50">
-                                                <img src="app-assets/images/portrait/small/avatar-s-7.jpg" alt="Avatar"
-                                                    width="24" height="24" />
-                                            </div>
-                                            <div class="author-info">
-                                                <small class="text-muted me-25">by</small>
-                                                <small><a href="#" class="text-body">Ghani Pradita</a></small>
-                                                <span class="text-muted ms-50 me-25">|</span>
-                                                <small class="text-muted">Jan 10, 2020</small>
-                                            </div>
-                                        </div>
-                                        <div class="my-1 py-25">
-                                            <a href="#">
-                                                <span class="badge rounded-pill badge-light-danger me-50">Gaming</span>
-                                            </a>
-                                            <a href="#">
-                                                <span class="badge rounded-pill badge-light-warning">Video</span>
-                                            </a>
-                                        </div>
-                                        <p class="card-text mb-2">
-                                            Before you get into the nitty-gritty of coming up with a perfect title,
-                                            start with a rough draft: your
-                                            working title. What is that, exactly? A lot of people confuse working titles
-                                            with topics. Let's clear that
-                                            Topics are very general and could yield several different blog posts. Think
-                                            "raising healthy kids," or
-                                            "kitchen storage." A writer might look at either of those topics and choose
-                                            to take them in very, very
-                                            different directions.A working title, on the other hand, is very specific
-                                            and guides the creation of a
-                                            single blog post. For example, from the topic "raising healthy kids," you
-                                            could derive the following working
-                                            title See how different and specific each of those is? That's what makes
-                                            them working titles, instead of
-                                            overarching topics.
-                                        </p>
-                                        <h4 class="mb-75">Unprecedented Challenge</h4>
-                                        <ul class="p-0 mb-2">
-                                            <li class="d-block">
-                                                <span class="me-25">-</span>
-                                                <span>Preliminary thinking systems</span>
-                                            </li>
-                                            <li class="d-block">
-                                                <span class="me-25">-</span>
-                                                <span>Bandwidth efficient</span>
-                                            </li>
-                                            <li class="d-block">
-                                                <span class="me-25">-</span>
-                                                <span>Green space</span>
-                                            </li>
-                                            <li class="d-block">
-                                                <span class="me-25">-</span>
-                                                <span>Social impact</span>
-                                            </li>
-                                            <li class="d-block">
-                                                <span class="me-25">-</span>
-                                                <span>Thought partnership</span>
-                                            </li>
-                                            <li class="d-block">
-                                                <span class="me-25">-</span>
-                                                <span>Fully ethical life</span>
-                                            </li>
-                                        </ul>
-                                        <div class="d-flex align-items-start">
-                                            <div class="avatar me-2">
-                                                <img src="app-assets/images/portrait/small/avatar-s-6.jpg" width="60"
-                                                    height="60" alt="Avatar" />
-                                            </div>
-                                            <div class="author-info">
-                                                <h6 class="fw-bolder">Willie Clark</h6>
-                                                <p class="card-text mb-0">
-                                                    Based in London, Uncode is a blog by Willie Clark. His posts explore
-                                                    modern design trends through photos
-                                                    and quotes by influential creatives and web designer around the
-                                                    world.
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <hr class="my-2" />
-                                        <div class="d-flex align-items-center justify-content-between">
-                                            <div class="d-flex align-items-center">
-                                                <div class="d-flex align-items-center me-1">
-                                                    <a href="#" class="me-50">
-                                                        <i data-feather="message-square"
-                                                            class="font-medium-5 text-body align-middle"></i>
-                                                    </a>
-                                                    <a href="#">
-                                                        <div class="text-body align-middle">19.1K</div>
-                                                    </a>
-                                                </div>
-                                                <div class="d-flex align-items-center">
-                                                    <a href="#" class="me-50">
-                                                        <i data-feather="bookmark"
-                                                            class="font-medium-5 text-body align-middle"></i>
-                                                    </a>
-                                                    <a href="#">
-                                                        <div class="text-body align-middle">139</div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="dropdown blog-detail-share">
-                                                <i data-feather="share-2" class="font-medium-5 text-body cursor-pointer"
-                                                    role="button" data-bs-toggle="dropdown" aria-haspopup="true"
-                                                    aria-expanded="false"></i>
-                                                <div class="dropdown-menu dropdown-menu-end">
-                                                    <a href="#" class="dropdown-item py-50 px-1">
-                                                        <i data-feather="github" class="font-medium-3"></i>
-                                                    </a>
-                                                    <a href="#" class="dropdown-item py-50 px-1">
-                                                        <i data-feather="gitlab" class="font-medium-3"></i>
-                                                    </a>
-                                                    <a href="#" class="dropdown-item py-50 px-1">
-                                                        <i data-feather="facebook" class="font-medium-3"></i>
-                                                    </a>
-                                                    <a href="#" class="dropdown-item py-50 px-1">
-                                                        <i data-feather="twitter" class="font-medium-3"></i>
-                                                    </a>
-                                                    <a href="#" class="dropdown-item py-50 px-1">
-                                                        <i data-feather="linkedin" class="font-medium-3"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--/ Blog -->
+    </style>
+</head>
+<body>
+<header>
 
-                            <!-- Blog Comment -->
-                            <div class="col-12 mt-1" id="blogComment">
-                                <h6 class="section-label mt-25">Comment</h6>
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="d-flex align-items-start">
-                                            <div class="avatar me-75">
-                                                <img src="app-assets/images/portrait/small/avatar-s-9.jpg" width="38"
-                                                    height="38" alt="Avatar" />
-                                            </div>
-                                            <div class="author-info">
-                                                <h6 class="fw-bolder mb-25">Chad Alexander</h6>
-                                                <p class="card-text">May 24, 2020</p>
-                                                <p class="card-text">
-                                                    A variation on the question technique above, the multiple-choice
-                                                    question great way to engage your
-                                                    reader.
-                                                </p>
-                                                <a href="#">
-                                                    <div class="d-inline-flex align-items-center">
-                                                        <i data-feather="corner-up-left"
-                                                            class="font-medium-3 me-50"></i>
-                                                        <span>Reply</span>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--/ Blog Comment -->
+<nav>
+    <div class="main_nav">
+        <div class="logo"> <a href="#"> My Health</a></div>
+        <div class="menubar"> <a href="#"> <i class="fa-solid fa-bars"></i> </a></div>
+    </div>
+</nav>
 
-                            <!-- Leave a Blog Comment -->
-                            <div class="col-12 mt-1">
-                                <h6 class="section-label mt-25">Leave a Comment</h6>
-                                <div class="card">
-                                    <div class="card-body">
-                                        <form action="javascript:void(0)" class="form">
-                                            <div class="row">
-                                                <div class="col-sm-6 col-12">
-                                                    <div class="mb-2">
-                                                        <input type="text" class="form-control" placeholder="Name" />
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6 col-12">
-                                                    <div class="mb-2">
-                                                        <input type="email" class="form-control" placeholder="Email" />
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6 col-12">
-                                                    <div class="mb-2">
-                                                        <input type="url" class="form-control" placeholder="Website" />
-                                                    </div>
-                                                </div>
-                                                <div class="col-12">
-                                                    <textarea class="form-control mb-2" rows="4"
-                                                        placeholder="Comment"></textarea>
-                                                </div>
-                                                <div class="col-12">
-                                                    <div class="form-check mb-2">
-                                                        <input type="checkbox" class="form-check-input"
-                                                            id="blogCheckbox" />
-                                                        <label class="form-check-label" for="blogCheckbox">Save my name,
-                                                            email, and website in this browser for the next time I
-                                                            comment.</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-12">
-                                                    <button type="submit" class="btn btn-primary">Post Comment</button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--/ Leave a Blog Comment -->
-                        </div>
-                    </div>
-                    <!--/ Blog Detail -->
+</header>
 
-                </div>
+<section>
+    <div class="container">
+        <div class="info1">
+            <h1>My Health</h1>
+            <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, est!</h3>
+
+            <div class="info1_btn">
+                <button onclick="location.href = 'login.php';" style="cursor: pointer;">Join now</button>
             </div>
         </div>
     </div>
-    <!-- END: Content-->
+</section>
 
-    <!-- BEGIN: Customizer-->
-    <div class="customizer d-none d-md-block"><a
-            class="customizer-toggle d-flex align-items-center justify-content-center" href="#"><i class="spinner"
-                data-feather="settings"></i></a>
-        <div class="customizer-content">
-            <!-- Customizer header -->
-            <div class="customizer-header px-2 pt-1 pb-0 position-relative">
-                <h4 class="mb-0">Theme Customizer</h4>
-                <p class="m-0">Customize & Preview in Real Time</p>
 
-                <a class="customizer-close" href="#"><i data-feather="x"></i></a>
+<section class="section2">
+    <div class="container_2">
+
+        <div class="heading1"><h1>Patient's Role</h1></div>
+
+        <div class="about_1">
+            <div class="about1_img">
+                <img src="app-assets/images/415.jpg" alt="">
             </div>
 
-            <hr />
+            <div class="about1_lorem">
+                
+               <h2> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem atque nisi, obcaecati unde esse beatae officiis nihil amet ipsum tempora laborum consequatur asperiores temporibus suscipit vero labore necessitatibus, nemo culpa id! Qui quaerat exercitationem cupiditate aut id omnis impedit? Harum.  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis illo reiciendis atque molestiae culpa dicta, officia expedita iure consectetur praesentium?  </h2></div>
 
-            <!-- Styling & Text Direction -->
-            <div class="customizer-styling-direction px-2">
-                <p class="fw-bold">Skin</p>
-                <div class="d-flex">
-                    <div class="form-check me-1">
-                        <input type="radio" id="skinlight" name="skinradio" class="form-check-input layout-name" checked
-                            data-layout="" />
-                        <label class="form-check-label" for="skinlight">Light</label>
-                    </div>
-                    <div class="form-check me-1">
-                        <input type="radio" id="skinbordered" name="skinradio" class="form-check-input layout-name"
-                            data-layout="bordered-layout" />
-                        <label class="form-check-label" for="skinbordered">Bordered</label>
-                    </div>
-                    <div class="form-check me-1">
-                        <input type="radio" id="skindark" name="skinradio" class="form-check-input layout-name"
-                            data-layout="dark-layout" />
-                        <label class="form-check-label" for="skindark">Dark</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="radio" id="skinsemidark" name="skinradio" class="form-check-input layout-name"
-                            data-layout="semi-dark-layout" />
-                        <label class="form-check-label" for="skinsemidark">Semi Dark</label>
-                    </div>
-                </div>
+        </div>
+    </div>
+</section>
+
+<section class="section3">
+    <div class="container_3">
+
+        <div class="heading2"><h1>Doctor's Role</h1></div>
+        <div class="about_2">
+        <div class="about2_lorem">
+                
+            <h2> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem atque nisi, obcaecati unde esse beatae officiis nihil amet ipsum tempora laborum consequatur asperiores temporibus suscipit vero labore necessitatibus, nemo culpa id! Qui quaerat exercitationem cupiditate aut id omnis impedit? Harum.  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis illo reiciendis atque molestiae culpa dicta, officia expedita iure consectetur praesentium?  </h2></div>
+
+     
+            <div class="about2_img">
+                <img src="app-assets/images/412.jpg" alt="">
+            </div>
+            
+
+        </div>
+    </div>
+</section>
+
+<section class="sub_section6">
+
+  
+
+    <div class="main_info">
+
+        <div class="sub_info1">
+
+            <h1>My Health Contact</h1>
+
+            <div class="get_ip">
+
+                <input type="text" name="name" placeholder="Your Name" class="ip_1">
+
+                <input type="email" name="mail" placeholder="Your E-mail"  class="ip_1">
+
+                <input type="number" name="phone" placeholder="Your Phone"  class="ip_1">
+
+                <textarea name="message" cols="30" rows="10" placeholder="Write a Message" ></textarea>
+
+                <input type="submit" value="SEND" class="submit_btn">
             </div>
 
-            <hr />
+        </div>
 
-            <!-- Menu -->
-            <div class="customizer-menu px-2">
-                <div id="customizer-menu-collapsible" class="d-flex">
-                    <p class="fw-bold me-auto m-0">Menu Collapsed</p>
-                    <div class="form-check form-check-primary form-switch">
-                        <input type="checkbox" class="form-check-input" id="collapse-sidebar-switch" />
-                        <label class="form-check-label" for="collapse-sidebar-switch"></label>
-                    </div>
-                </div>
-            </div>
-            <hr />
+        <div class="sub_info2">
 
-            <!-- Layout Width -->
-            <div class="customizer-footer px-2">
-                <p class="fw-bold">Layout Width</p>
-                <div class="d-flex">
-                    <div class="form-check me-1">
-                        <input type="radio" id="layout-width-full" name="layoutWidth" class="form-check-input"
-                            checked />
-                        <label class="form-check-label" for="layout-width-full">Full Width</label>
-                    </div>
-                    <div class="form-check me-1">
-                        <input type="radio" id="layout-width-boxed" name="layoutWidth" class="form-check-input" />
-                        <label class="form-check-label" for="layout-width-boxed">Boxed</label>
-                    </div>
-                </div>
-            </div>
-            <hr />
+            <!-- <h1>My Contact Details</h1> -->
 
-            <!-- Navbar -->
-            <div class="customizer-navbar px-2">
-                <div id="customizer-navbar-colors">
-                    <p class="fw-bold">Navbar Color</p>
-                    <ul class="list-inline unstyled-list">
-                        <li class="color-box bg-white border selected" data-navbar-default=""></li>
-                        <li class="color-box bg-primary" data-navbar-color="bg-primary"></li>
-                        <li class="color-box bg-secondary" data-navbar-color="bg-secondary"></li>
-                        <li class="color-box bg-success" data-navbar-color="bg-success"></li>
-                        <li class="color-box bg-danger" data-navbar-color="bg-danger"></li>
-                        <li class="color-box bg-info" data-navbar-color="bg-info"></li>
-                        <li class="color-box bg-warning" data-navbar-color="bg-warning"></li>
-                        <li class="color-box bg-dark" data-navbar-color="bg-dark"></li>
-                    </ul>
-                </div>
+            <div class="info2_txt">
 
-                <p class="navbar-type-text fw-bold">Navbar Type</p>
-                <div class="d-flex">
-                    <div class="form-check me-1">
-                        <input type="radio" id="nav-type-floating" name="navType" class="form-check-input" checked />
-                        <label class="form-check-label" for="nav-type-floating">Floating</label>
-                    </div>
-                    <div class="form-check me-1">
-                        <input type="radio" id="nav-type-sticky" name="navType" class="form-check-input" />
-                        <label class="form-check-label" for="nav-type-sticky">Sticky</label>
-                    </div>
-                    <div class="form-check me-1">
-                        <input type="radio" id="nav-type-static" name="navType" class="form-check-input" />
-                        <label class="form-check-label" for="nav-type-static">Static</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="radio" id="nav-type-hidden" name="navType" class="form-check-input" />
-                        <label class="form-check-label" for="nav-type-hidden">Hidden</label>
-                    </div>
-                </div>
-            </div>
-            <hr />
+            <p class="p1">EMAIL</p>
+            <p class="p2">brij@gmail.com</p>
 
-            <!-- Footer -->
-            <div class="customizer-footer px-2">
-                <p class="fw-bold">Footer Type</p>
-                <div class="d-flex">
-                    <div class="form-check me-1">
-                        <input type="radio" id="footer-type-sticky" name="footerType" class="form-check-input" />
-                        <label class="form-check-label" for="footer-type-sticky">Sticky</label>
-                    </div>
-                    <div class="form-check me-1">
-                        <input type="radio" id="footer-type-static" name="footerType" class="form-check-input"
-                            checked />
-                        <label class="form-check-label" for="footer-type-static">Static</label>
-                    </div>
-                    <div class="form-check me-1">
-                        <input type="radio" id="footer-type-hidden" name="footerType" class="form-check-input" />
-                        <label class="form-check-label" for="footer-type-hidden">Hidden</label>
-                    </div>
-                </div>
-            </div>
+            <p class="p1">PHONE</p>
+            <p class="p2">+91 9954369210</p>
+
+
+            <p class="p1">ADDRESS</p>
+            <p class="p2">B-101 , Silver Business Point <br>
+                Mota Varachha <br>
+                Surat</p>
+
+        </div>
+
         </div>
 
     </div>
-    <!-- End: Customizer-->
 
+</section>
+
+<footer>
+    <p>Copyright &copy; 2022 All rights reserved | Myhealth</p>
+
+    <div class="social_logo">
+
+        <ul>
+            <li><i class="fa-brands fa-facebook-f"></i></li>
+            <li><i class="fa-brands fa-twitter"></i></li>
+            <li><i class="fa-brands fa-instagram"></i></li>
+            <li><i class="fa-brands fa-linkedin-in"></i></li>
+            <li><i class="fa-brands fa-vimeo-v"></i></li>
+        </ul>
 
     </div>
-
-    <div class="sidenav-overlay"></div>
-    <div class="drag-target"></div>
-
-    <!-- BEGIN: Footer-->
-    <footer class="footer footer-static footer-light">
-        <p class="clearfix mb-0"><span class="float-md-start d-block d-md-inline-block mt-25">COPYRIGHT &copy; 2022<a
-                    class="ms-25" href="#" target="_blank">My Health</a><span class="d-none d-sm-inline-block">, All
-                    rights Reserved</span></span><span class="float-md-end d-none d-md-block">Hand-crafted & Made with<i
-                    data-feather="heart"></i></span></p>
-    </footer>
-    <button class="btn btn-primary btn-icon scroll-top" type="button"><i data-feather="arrow-up"></i></button>
-    <!-- END: Footer-->
+</footer>
 
 
 
-    <!-- BEGIN: Vendor JS-->
-    <script src="app-assets/vendors/js/vendors.min.js"></script>
-    <!-- BEGIN Vendor JS-->
-
-    <!-- BEGIN: Page Vendor JS-->
-    <script src="app-assets/vendors/js/forms/wizard/bs-stepper.min.js"></script>
-    <script src="app-assets/vendors/js/forms/select/select2.full.min.js"></script>
-    <script src="app-assets/vendors/js/forms/validation/jquery.validate.min.js"></script>
-    <!-- END: Page Vendor JS-->
-
-    <!-- BEGIN: Theme JS-->
-    <script src="app-assets/js/core/app-menu.min.js"></script>
-    <script src="app-assets/js/core/app.min.js"></script>
-    <script src="app-assets/js/scripts/customizer.min.js"></script>
-    <!-- END: Theme JS-->
-
-    <!-- BEGIN: Page JS-->
-    <script src="app-assets/js/scripts/forms/form-wizard.min.js"></script>
-    <!-- END: Page JS-->
-
-    <script>
-    $(window).on('load', function() {
-        if (feather) {
-            feather.replace({
-                width: 14,
-                height: 14
-            });
-        }
-    })
-    </script>
 </body>
-<!-- END: Body-->
-
 </html>

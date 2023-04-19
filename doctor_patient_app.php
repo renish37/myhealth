@@ -112,7 +112,7 @@ $patient_email = "";
             <div class="d-flex align-items-center flex-column">
               <img
                 class="img-fluid rounded mt-3 mb-2"
-                src="app-assets/images/patient.png"
+                src="app-assets/images/415.jpg"
                 height="110"
                 width="110"
                 alt="User avatar"
