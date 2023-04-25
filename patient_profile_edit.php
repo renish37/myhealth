@@ -21,7 +21,7 @@ if(isset($_POST['submit'])){
 
     // INSERT INTO `patient_data` (`id`, `username`, `email`, `phone`, `address`, `date`, `zipcode`, `country`, `subject`, `description`, `created_at`) VALUES (NULL, 'Renish', 'renish@gmail.com', '1234567890', 'surat', '2023-04-14', '395006', 'India', 'polio', 'I have polio for 3 months..', current_timestamp());
 
-    $query = "INSERT INTO `patient_data` (`id`, `username`, `email`, `phone`, `address`, `date`, `zipcode`, `country`, `subject`, `description`, `created_at`) VALUES (NULL, '$username', ' $email', '$phone', '$address', '$date', '$zipcode', '$country', '$subject', '$description', current_timestamp())";
+    $query = "INSERT INTO `patient_data` (`id`, `username`, `email`, `phone`, `address`, `date`, `zipcode`, `country`, `subject`, `description`, `created_at`) VALUES (NULL, '$username', '$email', '$phone', '$address', '$date', '$zipcode', '$country', '$subject', '$description', current_timestamp())";
     $result=  mysqli_query($con,$query);
     header("location: patient_profile.php");
 }

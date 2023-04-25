@@ -15,7 +15,7 @@ if(isset($_POST['submit'])){
     $subject = $_POST['subject'];
     $description = $_POST['description'];
 
-    $query = "INSERT INTO `doctor_data` (`id`, `username`, `email`, `phone`, `address`, `date`, `zipcode`, `country`, `subject`, `description`, `created_at`) VALUES (NULL, '$username', ' $email', '$phone', '$address', '$date', '$zipcode', '$country', '$subject', '$description', current_timestamp())";
+    $query = "INSERT INTO `doctor_data` (`id`, `username`, `email`, `phone`, `address`, `date`, `zipcode`, `country`, `subject`, `description`, `created_at`) VALUES (NULL, '$username', '$email', '$phone', '$address', '$date', '$zipcode', '$country', '$subject', '$description', current_timestamp())";
     $result=  mysqli_query($con,$query);
     header("location: doctor_profile.php");
 }

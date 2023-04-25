@@ -114,8 +114,9 @@ if($_SESSION['role'] != "doctor"){
         <!-- profile cover photo -->
         <img
           class="card-img-top"
-          src="app-assets/images/profile/user-uploads/timeline.jpg"
+          src="app-assets/images/doctor.jpg"
           alt="User Profile Image"
+          style="height: 45vh;"
         />
         <!--/ profile cover photo -->
 
@@ -127,6 +128,7 @@ if($_SESSION['role'] != "doctor"){
                 src="app-assets/images/412.jpg"
                 class="rounded img-fluid"
                 alt="Card image"
+                
               />
             </div>
             <!-- profile title -->
