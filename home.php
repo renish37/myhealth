@@ -478,7 +478,7 @@ i.fa-brands {
     <div class="container">
         <div class="info1">
             <h1>My Health</h1>
-            <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, est!</h3>
+            <h3>ONE PLACE TO STORE YOUR HEALTH RECORD</h3>
 
             <div class="info1_btn">
                 <button onclick="location.href = 'login.php';" style="cursor: pointer;">Join now</button>
@@ -500,7 +500,8 @@ i.fa-brands {
 
             <div class="about1_lorem">
                 
-               <h2> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem atque nisi, obcaecati unde esse beatae officiis nihil amet ipsum tempora laborum consequatur asperiores temporibus suscipit vero labore necessitatibus, nemo culpa id! Qui quaerat exercitationem cupiditate aut id omnis impedit? Harum.  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis illo reiciendis atque molestiae culpa dicta, officia expedita iure consectetur praesentium?  </h2></div>
+                
+               <h2> It a platform where the patient can save their health record easily and he can view the record whenever he needs doctor can access it easily ang get tretment according to every patient. Patient book appointment for particular doctor from list of doctor and easily select particular doctor that he want. Patient can see the list of appointment that are sent to that doctor  </h2></div>
 
         </div>
     </div>
@@ -513,7 +514,7 @@ i.fa-brands {
         <div class="about_2">
         <div class="about2_lorem">
                 
-            <h2> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem atque nisi, obcaecati unde esse beatae officiis nihil amet ipsum tempora laborum consequatur asperiores temporibus suscipit vero labore necessitatibus, nemo culpa id! Qui quaerat exercitationem cupiditate aut id omnis impedit? Harum.  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis illo reiciendis atque molestiae culpa dicta, officia expedita iure consectetur praesentium?  </h2></div>
+            <h2> It a platform where the doctor can save their record easily and he can view the record whenever he needs. Doctor view the patient appointment and accept the appointment. Doctor view patient details and view that patient list of appointment that are sent in past.  </h2></div>
 
      
             <div class="about2_img">

@@ -114,7 +114,7 @@ if($_SESSION['role'] != "doctor"){
         <!-- profile cover photo -->
         <img
           class="card-img-top"
-          src="app-assets/images/doctor.jpg"
+          src="app-assets/images/both.png"
           alt="User Profile Image"
           style="height: 45vh;"
         />
